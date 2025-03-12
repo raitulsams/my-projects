@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Tube</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="w-11/12 mx-auto py-3  mx flex justify-between  items-center border-b-2 border-gray-200">
+            <div class="logo w-[100px]">
+                <img src="assests/Logo.png" alt="">
+            </div>
+            <div class="search">
+                <label class="input">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input id="search-video" type="search" placeholder="Search" />
+                </label>
+            </div>
+            <div class="sort">
+                <button class="btn btn-secondary">Sort</button>
+            </div>
+        </nav>
+    </header>
+    <nav>
+        <div id="categories" class="flex justify-center gap-3 py-2">
+        </div>
+    </nav>
+    <main>
+        <section id="videos"
+            class="w-11/12 gap-5 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center">
+        </section>
+        <!-- modal button -->
+        <!-- <button class="btn" onclick="videoModal.showModal()">open modal</button> -->
+        <dialog id="videoModal" class="modal">
+            <div class="modal-box">
+                <div id="detailsContainer" class="grid justify-center">
+                </div>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
+        <section id="loader" class="text-center py-10 hidden">
+            <span class="loading loading-infinity loading-xl"></span>
+        </section>
+    </main>
+    <!-- api script -->
+    <script src="scripts/video.js"></script>
+</body>
+
+</html>
