@@ -1,0 +1,6 @@
+.shadow-btn {
+    border: none;
+    color: #222;
+    background: linear-gradient(90deg, #e89afd 0%, #ffd86c 100%);
+    box-shadow: 0 8px 24px 0 rgba(80, 80, 80, 0.18);
+}

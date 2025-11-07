@@ -1,0 +1,46 @@
+/* toastStyles.css */
+
+/* .custom-toast {
+    background-color: #333;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.msgContains {
+    font-size: 16px;
+    color: black;
+}
+
+.buttons button {
+    /* background-color: transparent; */
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+}
+
+.confirm {
+    background-color: #4caf50;
+}
+
+.confirm:hover {
+    background-color: #45a049;
+}
+
+.cancel {
+    background-color: #f44336;
+}
+
+.cancel:hover {
+    background-color: #d32f2f;
+}
