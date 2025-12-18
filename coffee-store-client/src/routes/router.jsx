@@ -4,10 +4,28 @@ import {
     RouterProvider,
 } from "react-router";
 import HomeLayout from '../layouts/HomeLayout';
+import Home from '../components/Home';
+import AddCoffee from '../components/AddCoffee';
+import UpdateCoffee from '../components/UpdateCoffee';
 const router = createBrowserRouter([
     {
         path: "/",
         Component: HomeLayout,
+        children: [
+            {
+                index: true,
+                Component: Home
+            },
+            {
+                path: 'addCoffee',
+                Component: AddCoffee
+            },
+            {
+                path: 'updateCoffee/:id',
+                Component: UpdateCoffee
+            }
+
+        ]
     },
 ]);
 

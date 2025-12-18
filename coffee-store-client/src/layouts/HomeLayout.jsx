@@ -1,11 +1,16 @@
 import React from 'react';
+import Header from '../components/Header';
+import { Outlet } from 'react-router';
+import Home from '../components/Home';
 
 const HomeLayout = () => {
     return (
         <div>
-            <header>This is header</header>
+            <header>
+                <Header></Header>
+            </header>
             <main>
-                <h1>Welcome to the Home Layout</h1>
+                <Home></Home>
             </main>
             <footer>This is footer</footer>
         </div>
