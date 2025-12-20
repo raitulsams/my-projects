@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
-import { Outlet } from 'react-router';
+import { Outlet, ScrollRestoration } from 'react-router';
+import Footer from '../components/Footer';
 
 const HomeLayout = () => {
     return (
@@ -13,7 +14,8 @@ const HomeLayout = () => {
                     and navigating to `/addCoffee` will render `AddCoffee` (keeping Header). */}
                 <Outlet />
             </main>
-            {/* <footer>This is footer</footer> */}
+            <Footer></Footer>
+            <ScrollRestoration />
         </div>
     );
 };

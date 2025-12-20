@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "6946064f78158e527d6c2956",
+    "name": "Espresso Roast",
+    "chef": "Giovanni Rossi",
+    "supplier": "Italian Coffee Co.",
+    "price": "4.50",
+    "category": "Espresso",
+    "details": "Strong and rich espresso with a bold crema and intense aroma.",
+    "photo": "https://i.ibb.co/1GsKY2dq/1.png"
+  },
+  {
+    "_id": "694606a378158e527d6c2957",
+    "name": "Cappuccino Blend",
+    "chef": "Marco Bianchi",
+    "supplier": "Milano Beans",
+    "price": "5.20",
+    "category": "Cappuccino",
+    "details": "Smooth coffee blend with creamy milk foam and balanced taste.",
+    "photo": "https://i.ibb.co/YFPzfFPk/2.png"
+  },
+  {
+    "_id": "694606c978158e527d6c2958",
+    "name": "Dark Mocha",
+    "chef": "Sofia Romano",
+    "supplier": "Arabica Select",
+    "price": "6.00",
+    "category": "Mocha",
+    "details": "Deep chocolate flavor combined with dark roasted coffee beans.",
+    "photo": "https://i.ibb.co/GfH3pnCb/3.png"
+  },
+  {
+    "_id": "694606f078158e527d6c2959",
+    "name": "Latte Classic",
+    "chef": "Luca Conti",
+    "supplier": "Brew Masters",
+    "price": "4.80",
+    "category": "Latte",
+    "details": "Light roasted coffee mixed with steamed milk for a smooth finish.",
+    "photo": "https://i.ibb.co/h1hN7wP0/4.png"
+  },
+  {
+    "_id": "6946071178158e527d6c295a",
+    "name": "Caramel Macchiato",
+    "chef": "Elena Ferrari",
+    "supplier": "Sweet Roast Ltd.",
+    "price": "5.90",
+    "category": "Macchiato",
+    "details": "Sweet caramel notes layered with espresso and foamed milk.",
+    "photo": "https://i.ibb.co/4RvqJ5cb/5.png"
+  },
+  {
+    "_id": "6946073a78158e527d6c295b",
+    "name": "Cold Brew Special",
+    "chef": "Daniel Weber",
+    "supplier": "Nordic Brew",
+    "price": "6.50",
+    "category": "Cold Brew",
+    "details": "Slow-brewed cold coffee with low acidity and refreshing taste.",
+    "photo": "https://i.ibb.co/4RshhTJz/6.png"
+  }
+]
