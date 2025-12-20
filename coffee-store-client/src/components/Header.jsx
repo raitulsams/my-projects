@@ -4,16 +4,25 @@ import headerBg from '../assets/more/15.jpg';
 
 const Header = () => {
     return (
-        <header className="relative">
+        <header className="relative h-20 w-full overflow-hidden">
+
             {/* Background Image */}
             <img
                 src={headerBg}
                 alt="Header background"
-                className="absolute w-full h-28 object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Overlay Content */}
+
+            {/* Optional dark overlay */}
+            <div className="absolute inset-0 bg-black/20"></div>
+
+            {/* Content */}
             <div className="relative z-10 flex justify-center items-center h-full">
-                <img className="h-16 w-14" src={logo} alt="Logo" />
+                <img
+                    src={logo}
+                    alt="Espresso Emporium Logo"
+                    className="h-16 w-14"
+                />
                 <p className="font-rancho text-4xl ml-2 text-white">
                     Espresso Emporium
                 </p>

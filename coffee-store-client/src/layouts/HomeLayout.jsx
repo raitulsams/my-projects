@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
 import { Outlet } from 'react-router';
-import Home from '../components/Home';
 
 const HomeLayout = () => {
     return (
@@ -10,9 +9,11 @@ const HomeLayout = () => {
                 <Header></Header>
             </header>
             <main>
-                <Home></Home>
+                {/* Render only the active child route here. The index route will show `Home`,
+                    and navigating to `/addCoffee` will render `AddCoffee` (keeping Header). */}
+                <Outlet />
             </main>
-            <footer>This is footer</footer>
+            {/* <footer>This is footer</footer> */}
         </div>
     );
 };

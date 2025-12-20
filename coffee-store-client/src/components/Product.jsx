@@ -1,45 +1,67 @@
 import React from "react";
-import ImgAmericano from "../assets/5.png";
 import { FaEye } from "react-icons/fa";
-import { MdModeEditOutline } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-const Product = () => {
-    return (
-        <div className="">
-            <div className="flex justify-around px-10 items-center gap-6 bg-[#F5F4F1] w-162">
-                <img className="min-w-48" src={ImgAmericano} alt="" />
-                <div className="space-y-2">
-                    <p className="font-raleway text-[16px]">
-                        <span className="text-[#1B1A1A] font-semibold">Name: </span>
-                        <span className="text-[#5C5B5B]">Americano Coffee</span>
-                    </p>
-                    <p className="font-raleway text-[16px]">
-                        <span className="text-[#1B1A1A] font-semibold">Chef: </span>
-                        <span className="text-[#5C5B5B]">Mr. Matin Paul</span>
-                    </p>
-                    <p className="font-raleway text-[16px]">
-                        <span className="text-[#1B1A1A] font-semibold">Price: </span>
-                        <span className="text-[#5C5B5B]">890 Taka</span>
+import { MdModeEditOutline, MdDelete } from "react-icons/md";
 
-                    </p>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <button
-                        type="button"
-                        className="btn btn-square bg-[#D2B48C] border-0 w-8 h-8"
-                    >
-                        <FaEye size={20} />
-                    </button>
-                    <button className="btn btn-square bg-[#3C393B] border-0 w-8 h-8">
-                        <MdModeEditOutline size={20} />
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-square bg-[#EA4744] border-0 w-8 h-8"
-                    >
-                        <MdDelete size={20} />
-                    </button>
-                </div>
+const Product = ({ coffee }) => {
+    const handleCoffeeDelete = (id) => {
+        console.log("Delete coffee with id: ", id);
+        // Implement delete functionality here
+    }
+    return (
+        // 1. 'w-full': Fills the grid cell (fixes the w-162 issue)
+        // 2. 'flex-col sm:flex-row': Stack vertical on mobile, horizontal on tablet+
+        // 3. 'p-6': Added padding for better spacing
+        <div className="flex flex-col sm:flex-row items-center justify-between p-6 gap-6 bg-[#F5F4F1] rounded-lg shadow-sm w-full">
+
+            {/* Image Section */}
+            <div className="shrink-0">
+                <img
+                    // Responsive Image: Full width on mobile, fixed 48 (12rem) on desktop
+                    // className="w-full h-56 sm:w-48 sm:h-48 object-cover rounded-md"
+                    className="w-48 h-48 object-contain rounded-md bg-gray-200"
+                    src={coffee.photo}
+                    alt={coffee.name}
+                />
+            </div>
+
+            {/* Text Details Section */}
+            {/* Centered text on mobile, Left-aligned on desktop */}
+            <div className="grow space-y-2 text-center sm:text-left">
+                <p className="font-raleway text-base">
+                    <span className="text-[#1B1A1A] font-semibold">Name: </span>
+                    <span className="text-[#5C5B5B]">{coffee.name}</span>
+                </p>
+                <p className="font-raleway text-base">
+                    <span className="text-[#1B1A1A] font-semibold">Chef: </span>
+                    <span className="text-[#5C5B5B]">{coffee.chef}</span>
+                </p>
+                <p className="font-raleway text-base">
+                    <span className="text-[#1B1A1A] font-semibold">Price: </span>
+                    <span className="text-[#5C5B5B]">{coffee.price}</span>
+                </p>
+            </div>
+
+            {/* Buttons Section */}
+            {/* Row on mobile, Column on desktop */}
+            <div className="flex flex-row sm:flex-col gap-3">
+                <button
+                    type="button"
+                    className="btn btn-square bg-[#D2B48C] text-white border-none w-10 h-10 flex justify-center items-center rounded-md hover:bg-[#b89b72]"
+                >
+                    <FaEye size={20} />
+                </button>
+                <button
+                    className="btn btn-square bg-[#3C393B] text-white border-none w-10 h-10 flex justify-center items-center rounded-md hover:bg-[#242222]"
+                >
+                    <MdModeEditOutline size={20} />
+                </button>
+                <button
+                    onClick={() => { handleCoffeeDelete(coffee._id) }}
+                    type="button"
+                    className="btn btn-square bg-[#EA4744] text-white border-none w-10 h-10 flex justify-center items-center rounded-md hover:bg-[#c43633]"
+                >
+                    <MdDelete size={20} />
+                </button>
             </div>
         </div>
     );
