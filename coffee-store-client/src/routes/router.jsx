@@ -8,6 +8,8 @@ import Home from '../components/Home';
 import AddCoffee from '../components/AddCoffee';
 import UpdateCoffee from '../components/UpdateCoffee';
 import CoffeeDetail from '../components/CoffeDetail';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
 const router = createBrowserRouter([
     {
         path: "/",
@@ -31,8 +33,15 @@ const router = createBrowserRouter([
                 path: 'updateCoffee/:id',
                 Component: UpdateCoffee,
                 loader: ({ params }) => fetch(`http://localhost:3002/coffees/${params.id}`).then(res => res.json())
+            },
+            {
+                path: 'login',
+                Component: Login,
+            },
+            {
+                path: 'signup',
+                Component: SignUp,
             }
-
         ]
     },
 ]);

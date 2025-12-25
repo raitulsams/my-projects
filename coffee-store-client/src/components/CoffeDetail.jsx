@@ -11,7 +11,6 @@ const CoffeeDetail = () => {
     const { _id, name, chef, supplier, price, category, details, photo } = coffee;
 
     return (
-        // Same outer container structure as your AddCoffee component
         <div
             className="min-h-screen w-full bg-[#F4F3F0] p-4 md:p-6 bg-contain object-cover font-raleway"
             style={{ backgroundImage: `url(${bgLeaf})` }}

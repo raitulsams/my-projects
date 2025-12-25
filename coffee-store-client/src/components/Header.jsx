@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../assets/more/logo1.png';
 import headerBg from '../assets/more/15.jpg';
+import { RiAccountPinCircleFill } from "react-icons/ri";
+import { Link, NavLink } from 'react-router';
 
 const Header = () => {
     return (
@@ -14,18 +16,30 @@ const Header = () => {
             />
 
             {/* Optional dark overlay */}
-            <div className="absolute inset-0 bg-black/20"></div>
+            {/* <div className="absolute inset-0 bg-black/20"></div> */}
 
-            {/* Content */}
-            <div className="relative z-10 flex justify-center items-center h-full">
-                <img
-                    src={logo}
-                    alt="Espresso Emporium Logo"
-                    className="h-16 w-14"
-                />
-                <p className="font-rancho text-4xl ml-2 text-white">
-                    Espresso Emporium
-                </p>
+            {/* Center Content (Existing) */}
+            <Link to="/">
+                <div className="relative z-10 flex justify-center items-center h-full">
+                    <img
+                        src={logo}
+                        alt="Espresso Emporium Logo"
+                        className="h-16 w-14"
+                    />
+                    <p className="font-rancho text-4xl ml-2 text-white">
+                        Espresso Emporium
+                    </p>
+                </div>
+            </Link>
+
+
+            {/* --- NEW RIGHT LOGO --- */}
+            {/* right-4: adds spacing from the right edge */}
+            {/* top-1/2 -translate-y-1/2: perfectly centers it vertically */}
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20">
+                <NavLink to="/login">
+                    <RiAccountPinCircleFill size={40} className="text-white" />
+                </NavLink>
             </div>
 
         </header>
