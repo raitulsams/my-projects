@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../assets/more/logo1.png';
 import headerBg from '../assets/more/15.jpg';
-import { RiAccountPinCircleFill } from "react-icons/ri";
+import { PiUserBold } from "react-icons/pi";
+import { PiUsersBold } from "react-icons/pi";
 import { Link, NavLink } from 'react-router';
 
 const Header = () => {
@@ -37,9 +38,14 @@ const Header = () => {
             {/* right-4: adds spacing from the right edge */}
             {/* top-1/2 -translate-y-1/2: perfectly centers it vertically */}
             <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20">
-                <NavLink to="/login">
-                    <RiAccountPinCircleFill size={40} className="text-white" />
-                </NavLink>
+                <div className='flex gap-3'>
+                    <NavLink to="/login">
+                        <PiUserBold size={25} className="text-white" />
+                    </NavLink>
+                    <NavLink to="/users">
+                        <PiUsersBold size={25} className="text-white" />
+                    </NavLink>
+                </div>
             </div>
 
         </header>

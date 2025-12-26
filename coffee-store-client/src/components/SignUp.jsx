@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import React, { useState, use } from 'react';
+import { Link } from 'react-router';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { MdArrowForward } from "react-icons/md";
 // import { AuthContext } from '../../provider/AuthProvider';
 import bgLeaf from '../assets/more/11.png'; // Ensure path is correct
+import { AuthContext } from '../contexts/AutoContext';
+import Swal from 'sweetalert2';
 
 // --- Reusable Input Field Component ---
 const InputField = ({ label, name, type = 'text', placeholder, className = '', children }) => (
@@ -31,51 +33,57 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
+    const { createUser } = use(AuthContext);
+    console.log(createUser);
+
     // Access auth functions from Context
     // Assuming you have 'createUser' and 'updateUserProfile' in your provider
     // const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleRegister = (event) => {
+    const handleSignUp = (event) => {
         event.preventDefault();
-        setError('');
+        // setError('');
 
         // --- 1. Get Form Data ---
         const form = event.target;
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        const { name, email, password, photo, phone } = data;
-
-        // Basic Validation
-        if (password.length < 6) {
-            setError("Password must be at least 6 characters long.");
-            return;
-        }
-
-        // --- 2. Create User in Firebase ---
+        const { email, password, ...rest } = Object.fromEntries(formData.entries());
         createUser(email, password)
-            .then((result) => {
-                const user = result.user;
-
-                // --- 3. Update Profile (Name & Photo) ---
-                // (Assuming you have this helper function in AuthProvider)
-                updateUserProfile(name, photo)
-                    .then(() => {
-                        // Optimistically update local state
-                        setUser({ ...user, displayName: name, photoURL: photo });
-
-                        // Optional: Save extra data (like phone) to your MongoDB database here
-                        // saveUserToDatabase(user.uid, { name, email, phone });
-
-                        form.reset();
-                        navigate('/');
-                    });
+            // save profile into to database
+            .then(result => {
+                console.log(result.user);
+                const userProfile = {
+                    email,
+                    ...rest,
+                    creationTime: result.user?.metadata?.creationTime,
+                    lastLoginAt: result.user?.metadata?.lastSignInTime
+                }
+                fetch('http://localhost:3002/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userProfile)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('after saving in mongodb', data);
+                        if (data.insertedId) {
+                            Swal.fire({
+                                title: "User Created.",
+                                icon: "success",
+                                draggable: true
+                            });
+                        }
+                    })
             })
             .catch(err => {
-                setError(err.message.replace('Firebase: ', ''));
-            });
+                console.log(err);
+            })
+
     };
+
 
     return (
         <div
@@ -104,7 +112,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleRegister}>
+                    <form onSubmit={handleSignUp}>
                         {/* 2-Column Grid Layout */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
