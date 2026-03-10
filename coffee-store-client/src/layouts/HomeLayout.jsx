@@ -13,9 +13,10 @@ const HomeLayout = () => {
                 {/* Render only the active child route here. The index route will show `Home`,
                     and navigating to `/addCoffee` will render `AddCoffee` (keeping Header). */}
                 <Outlet />
+
+                <ScrollRestoration />
             </main>
             <Footer></Footer>
-            <ScrollRestoration />
         </div>
     );
 };

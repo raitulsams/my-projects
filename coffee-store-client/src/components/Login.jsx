@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { use, useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { MdArrowForward } from "react-icons/md";
@@ -6,6 +6,7 @@ import { SiGoogle } from "react-icons/si";
 import { FiGithub } from "react-icons/fi";
 import { TbBrandTwitter } from "react-icons/tb";
 import bgLeaf from '../assets/more/11.png'; // Make sure this path is correct
+import { AuthContext } from '../contexts/AutoContext';
 
 // --- Reusable Input Field Component ---
 const InputField = ({ label, name, type = 'text', placeholder, className = '', children }) => (
@@ -32,6 +33,7 @@ const InputField = ({ label, name, type = 'text', placeholder, className = '', c
 const Login = () => {
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const { signInUser } = use(AuthContext)
 
     // const { signInUser, setUser } = useContext(AuthContext);
     const location = useLocation();
@@ -48,17 +50,32 @@ const Login = () => {
 
         // Destructure values specifically needed for Auth
         const { email, password } = data;
-
+        console.log(email, password)
         // --- 2. Process Login ---
-        // signInUser(email, password)
-        //     .then(result => {
-        //         form.reset();
-        //         setUser(result.user);
-        //         navigate(location?.state || '/');
-        //     })
-        //     .catch(err => {
-        //         setError(err.message.replace('Firebase: ', ''));
-        //     });
+        signInUser(email, password)
+            .then(result => {
+                // console.log(result);
+                const signInInfo = {
+                    email,
+                    lastSignInTime: result.user?.metadata?.lastSignInTime
+                }
+                // console.log(signInInfo)
+                fetch('http://localhost:3002/users', {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(signInInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+                // form.reset();
+                // setUser(result.user);
+                // navigate(location?.state || '/');
+            })
+            .catch(err => {
+                setError(err.message.replace('Firebase: ', ''));
+            });
     };
 
     return (
